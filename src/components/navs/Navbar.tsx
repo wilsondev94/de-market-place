@@ -4,6 +4,7 @@ import MaxWidthWrapper from "../shared/MaxWidthWrapper";
 import { Icons } from "../Icons";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
+import Cart from "../Cart";
 
 const Navbar = async () => {
   const user = null;
@@ -67,7 +68,9 @@ const Navbar = async () => {
                     </div>
                   )}
 
-                  <div className="ml-4 flow-root lg:ml-6">Cart</div>
+                  <div className="ml-4 flow-root lg:ml-6">
+                    <Cart />
+                  </div>
                 </div>
               </div>
             </div>
