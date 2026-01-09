@@ -1108,6 +1108,11 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@hookform/resolvers@^3.3.2":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-3.10.0.tgz#7bfd18113daca4e57e27e1205b7d5a2d371aa59a"
+  integrity sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==
+
 "@humanwhocodes/config-array@^0.13.0":
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.13.0.tgz#fb907624df3256d04b9aa2df50d7aa97ec648748"
@@ -1445,6 +1450,13 @@
   integrity sha512-kGkGegYIdQsOb4XjsfM97rXsiHaBwco+hFI66oO4s9LU+PLAC5oJ7khdOVFxkhsmlbpUqDAvXw11CluXP+jkHg==
   dependencies:
     "@radix-ui/react-use-layout-effect" "1.1.1"
+
+"@radix-ui/react-label@^2.1.8":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-2.1.8.tgz#d93b7c063ef2ea034df143a2464bfc0548e4b7e5"
+  integrity sha512-FmXs37I6hSBVDlO4y764TNz1rLgKwjJMQ0EGte6F3Cb3f4bIuHB/iLa/8I9VKkmOy+gNHq8rql3j686ACVV21A==
+  dependencies:
+    "@radix-ui/react-primitive" "2.1.4"
 
 "@radix-ui/react-portal@1.1.9":
   version "1.1.9"
@@ -7521,6 +7533,11 @@ react-helmet@6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+react-hook-form@^7.48.2:
+  version "7.70.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.70.0.tgz#256fa2ca71633c99f16ca2cd6074628aa52001b2"
+  integrity sha512-COOMajS4FI3Wuwrs3GPpi/Jeef/5W1DRR84Yl5/ShlT3dKVFUfoGiEZ/QE6Uw8P4T2/CLJdcTVYKvWBMQTEpvw==
+
 react-i18next@11.18.6:
   version "11.18.6"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.18.6.tgz#e159c2960c718c1314f1e8fcaa282d1c8b167887"
@@ -8251,6 +8268,11 @@ sonic-boom@^3.0.0, sonic-boom@^3.1.0:
   integrity sha512-y4Z8LCDBuum+PBP3lSV7RHrXscqksve/bi0as7mhwVnBW+/wUqKT/2Kb7um8yqcFy0duYbbPxzt89Zy2nOCaxg==
   dependencies:
     atomic-sleep "^1.0.0"
+
+sonner@^1.2.0:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/sonner/-/sonner-1.7.4.tgz#4c39820db86623800a17115c8970796aa862133a"
+  integrity sha512-DIS8z4PfJRbIyfVFDVnK9rO3eYDtse4Omcm6bt0oEr5/jtLgysmjuBl1frJ9E/EQZrFmKx2A8m/s5s9CRXIzhw==
 
 source-list-map@^2.0.0:
   version "2.0.1"
@@ -9371,3 +9393,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.22.4:
+  version "3.25.76"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.76.tgz#26841c3f6fd22a6a2760e7ccb719179768471e34"
+  integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
