@@ -5,24 +5,15 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { z } from "zod";
-import { trpc } from "@/trpc/client";
-
-export const AuthCredentialsValidator = z.object({
-  email: z.string().email(),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters long.",
-  }),
-});
-
-export type TAuthCredentialsValidator = z.infer<
-  typeof AuthCredentialsValidator
->;
+import {
+  AuthCredentialsValidator,
+  TAuthCredentialsValidator,
+} from "@/lib/validators";
 
 const Page = () => {
   const {
@@ -32,7 +23,6 @@ const Page = () => {
   } = useForm<TAuthCredentialsValidator>({
     resolver: zodResolver(AuthCredentialsValidator),
   });
-  const { data } = trpc.anyRoute.useQuery();
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
     console.log(email, password);
