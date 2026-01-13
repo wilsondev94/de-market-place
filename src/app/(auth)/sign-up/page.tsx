@@ -14,6 +14,7 @@ import {
   AuthCredentialsValidator,
   TAuthCredentialsValidator,
 } from "@/lib/validators";
+import { trpc } from "@/trpc/client";
 
 const Page = () => {
   const {
@@ -24,8 +25,12 @@ const Page = () => {
     resolver: zodResolver(AuthCredentialsValidator),
   });
 
+  const { mutate: createUser, isLoading } = trpc.auth.createUser.useMutation(
+    {}
+  );
+
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
-    console.log(email, password);
+    createUser({ email, password });
   };
 
   return (
@@ -86,7 +91,9 @@ const Page = () => {
                   )}
                 </div>
 
-                <Button>Sign up</Button>
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? "Signing up..." : "Sign up"}
+                </Button>
               </div>
             </form>
           </div>
