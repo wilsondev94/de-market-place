@@ -8,7 +8,7 @@ import { Users } from "./collections/Users";
 import { Products } from "./collections/Products/Products";
 import { Media } from "./collections/Media";
 import { ProductFiles } from "./collections/ProductFiles";
-import { Orders } from "./collections/Order";
+import { Orders } from "./collections/Orders";
 
 dotenv.config({
   path: path.resolve(__dirname, "../.env"),
