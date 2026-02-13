@@ -7,4 +7,12 @@ export const AuthCredentialsSchema = z.object({
   }),
 });
 
+export const InfiniteQuerySchema = z.object({
+  category: z.string().optional(),
+  sort: z.enum(["asc", "desc"]).optional(),
+  limit: z.number().optional(),
+});
+
+export type InfiniteQueryValidator = z.infer<typeof InfiniteQuerySchema>;
+
 export type AuthCredentialsValidator = z.infer<typeof AuthCredentialsSchema>;
