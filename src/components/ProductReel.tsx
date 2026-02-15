@@ -27,7 +27,9 @@ const ProductReel = ({ title, subtitle, href, query }: ProductReelProps) => {
       },
     );
 
-  const products = queryResults?.pages.flatMap((page) => page.items);
+  const products = queryResults?.pages.flatMap((page) => page.items) as
+    | Product[]
+    | undefined;
 
   let mapProduct: (Product | null)[] = [];
   if (products && products.length) {
