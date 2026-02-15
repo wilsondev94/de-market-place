@@ -1,17 +1,22 @@
+import ImageSlider from "@/components/ImageSlider";
+import ProductReel from "@/components/ProductReel";
 import MaxWidthWrapper from "@/components/shared/MaxWidthWrapper";
 import { PRODUCT_CATEGORIES } from "@/config";
 import { getPayloadClient } from "@/get-payload";
 import { formatPrice } from "@/lib/utils";
 import { Product } from "@/payload-types";
-import { Check } from "lucide-react";
+import { Check, Shield } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TypeWithID } from "payload/types";
 
 interface PageProps {
   params: {
     productId: string;
   };
 }
+
+type ProductType = TypeWithID & Product[];
 
 const BREADCRUMBS = [
   { id: 1, name: "Home", href: "/" },
@@ -36,13 +41,17 @@ export default async function page({ params }: PageProps) {
     },
   });
 
-  const product = products[0];
+  const [product] = products as unknown as ProductType;
 
   if (!product) return notFound();
 
   const label = PRODUCT_CATEGORIES.find(
     ({ value }) => value === product.category,
   )?.label;
+
+  const validUrls = product.images
+    .map(({ image }) => (typeof image === "string" ? image : image.url))
+    .filter(Boolean) as string[];
 
   return (
     <MaxWidthWrapper className="bg-white">
@@ -109,8 +118,36 @@ export default async function page({ params }: PageProps) {
               </div>
             </section>
           </div>
+          <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
+            <div className="aspect-square rounded-lg">
+              <ImageSlider urls={validUrls} />
+            </div>
+          </div>
+          {/* add to cart part */}
+          <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
+            <div>
+              <div className="mt-6 text-center">
+                <div className="group inline-flex text-sm text-medium">
+                  <Shield
+                    aria-hidden="true"
+                    className="mr-2 h-5 w-5 flex-shrink-0 text-gray-400"
+                  />
+                  <span className="text-muted-foreground hover:text-gray-700">
+                    30 Day Return Guarantee
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <ProductReel
+        href="/products"
+        query={{ category: product.category, limit: 4 }}
+        title={`Similar ${label}`}
+        subtitle={`Browse similar high-quality ${label} just like '${product.name}'`}
+      />
     </MaxWidthWrapper>
   );
 }
