@@ -1,10 +1,11 @@
 "use client";
 
+import { formatPrice } from "@/lib/utils";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { buttonVariants } from "./ui/button";
+import { Separator } from "./ui/separator";
 import {
   Sheet,
   SheetContent,
@@ -13,11 +14,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import { Separator } from "./ui/separator";
-import { formatPrice } from "@/lib/utils";
+import { useCart } from "@/hooks/use-cart";
+import { ScrollArea } from "./ui/scroll-area";
+import CartItem from "./CartItem";
 
 const Cart = () => {
-  const itemCount = 0;
+  const { items } = useCart();
+  const totalItems = items.length;
+
+  const cartTotal = items.reduce(
+    (total, { product }) => total + product.price,
+    0,
+  );
 
   const fee = 1;
 
@@ -31,11 +39,17 @@ const Cart = () => {
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
         <SheetHeader className="space-y-2.5 pr-6">
-          <SheetTitle>Cart (0)</SheetTitle>
+          <SheetTitle>Cart ({totalItems})</SheetTitle>
         </SheetHeader>
-        {itemCount > 0 ? (
+        {totalItems > 0 ? (
           <>
-            <div className="flex w-full flex-col pr-6"></div>
+            <div className="flex w-full flex-col pr-6">
+              <ScrollArea>
+                {items.map(({ product }) => (
+                  <CartItem product={product} key={product.id} />
+                ))}
+              </ScrollArea>
+            </div>
             <div className="space-y-4 pr-6">
               <Separator />
               <div className="space-y-1.5 text-sm">
@@ -49,8 +63,7 @@ const Cart = () => {
                 </div>
                 <div className="flex">
                   <span className="flex-1">Total</span>
-                  {/* TODO: Get the total dynamically */}
-                  <span>{formatPrice(fee)}</span>
+                  <span>{formatPrice(cartTotal + fee)}</span>
                 </div>
               </div>
 
