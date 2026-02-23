@@ -16,6 +16,13 @@ const Page = () => {
 
   const router = useRouter();
 
+  const { mutate: createCheckoutSession, isLoading } =
+    trpc.payment.createSession.useMutation({
+      onSuccess: ({ url }) => {
+        if (url) router.push(url);
+      },
+    });
+
   const productIds = items.map(({ product }) => product.id);
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -189,10 +196,14 @@ const Page = () => {
 
             <div className="mt-6">
               <Button
-                disabled={items.length === 0}
+                onClick={() => createCheckoutSession({ productIds })}
+                disabled={items.length === 0 || isLoading}
                 className="w-full"
                 size="lg"
               >
+                {isLoading ? (
+                  <Loader2 className="size-4 animate-spin mr-1.5" />
+                ) : null}
                 Checkout
               </Button>
             </div>
