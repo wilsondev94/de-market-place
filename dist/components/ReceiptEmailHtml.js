@@ -47,7 +47,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReceiptEmailHtml = exports.ReceiptEmail = void 0;
 var components_1 = require("@react-email/components");
 var React = __importStar(require("react"));
-var utils_1 = require("@/lib/utils");
+var utils_1 = require("../lib/utils");
 var date_fns_1 = require("date-fns");
 var ReceiptEmail = function (_a) {
     var email = _a.email, date = _a.date, orderId = _a.orderId, products = _a.products;

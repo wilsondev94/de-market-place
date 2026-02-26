@@ -98,7 +98,8 @@ var yourOwnAndPurchased = function (_a) { return __awaiter(void 0, [_a], void 0,
                 orders = (_c.sent()).docs;
                 purchasedProductFileIds = orders
                     .map(function (order) {
-                    return order.products.map(function (product) {
+                    var products = order.products;
+                    return products.map(function (product) {
                         if (typeof product === "string")
                             return req.payload.logger.error("Search depth not sufficient to find purchased file IDs");
                         return typeof product.product_files === "string"
