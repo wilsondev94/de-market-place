@@ -76,6 +76,8 @@ var trpcExpress = __importStar(require("@trpc/server/adapters/express"));
 var express_1 = __importDefault(require("express"));
 var get_payload_1 = require("./get-payload");
 var next_utils_1 = require("./next-utils");
+var build_1 = __importDefault(require("next/dist/build"));
+var path_1 = __importDefault(require("path"));
 var trpc_1 = require("./trpc");
 var body_parser_1 = __importDefault(require("body-parser"));
 var stripeWebhooks_1 = require("./stripeWebhooks");
@@ -119,7 +121,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                                 case 0:
                                     payload.logger.info("Next.js is building for production");
                                     // @ts-expect-error
-                                    return [4 /*yield*/, nextBuild(path.join(__dirname, "../"))];
+                                    return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, "../"))];
                                 case 1:
                                     // @ts-expect-error
                                     _a.sent();
