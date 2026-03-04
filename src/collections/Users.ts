@@ -1,4 +1,4 @@
-import { Email } from "@/components/EmailTemplate";
+import { Email } from "../components/EmailTemplate";
 import { Access, CollectionConfig } from "payload/types";
 
 const adminsAndUser: Access = ({ req: { user } }) => {
