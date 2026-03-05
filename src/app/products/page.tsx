@@ -1,0 +1,37 @@
+import ProductReel from "@/components/ProductReel";
+import MaxWidthWrapper from "@/components/shared/MaxWidthWrapper";
+import { PRODUCT_CATEGORIES } from "@/config";
+
+type Param = string | string[] | undefined;
+
+interface ProductsPageProps {
+  searchParams: { [key: string]: Param };
+}
+
+const parsedParam = (param: Param) => {
+  return typeof param === "string" ? param : undefined;
+};
+
+const ProductsPage = ({ searchParams }: ProductsPageProps) => {
+  const sort = parsedParam(searchParams.sort);
+  const category = parsedParam(searchParams.category);
+
+  const label = PRODUCT_CATEGORIES.find(
+    ({ value }) => value === category,
+  )?.label;
+
+  return (
+    <MaxWidthWrapper>
+      <ProductReel
+        title={label ?? "Browse high-quality assets"}
+        query={{
+          category,
+          limit: 40,
+          sort: sort === "desc" || sort === "asc" ? sort : undefined,
+        }}
+      />
+    </MaxWidthWrapper>
+  );
+};
+
+export default ProductsPage;
